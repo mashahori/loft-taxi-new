@@ -1,0 +1,15 @@
+.mapContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  }
+
+.card {
+  max-width: 450px;
+  padding: 44px 60px;
+  position: absolute;
+  left: 20px;
+  top: 100px;
+}
