@@ -8,8 +8,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import Map from "./components/Map/Map";
 // import Profile from "./components/Profile/Profile";
 import { Home } from "./pages";
+import { Login, Signup } from "./components";
 
 import { ProtectedRoute } from "./routes";
+import { GlobalStyles } from "./app/global-styles";
 
 const routes = ["map", "profile", "logout"];
 
@@ -19,14 +21,16 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
-  },
-  {
-    path: "/login",
-    element: <div>Login</div>,
-  },
-  {
-    path: "/signup",
-    element: <div>Signup</div>,
+    children: [
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "/signup",
+        element: <Signup />,
+      },
+    ],
   },
 ]);
 
@@ -34,6 +38,7 @@ export const App: FC = () => (
   <>
     {/* {authed && <Header routes={routes} />} */}
     <RouterProvider router={router} />
+    <GlobalStyles />
   </>
 
   // <BrowserRouter>

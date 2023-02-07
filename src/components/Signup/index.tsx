@@ -1,88 +1,80 @@
-// import React from "react";
-// import PropTypes from "prop-types";
-// import { Redirect, Link } from "react-router-dom";
-// import { connect } from "react-redux";
-// import { makeStyles } from "@material-ui/core/styles";
-// import { Container, Typography } from "@material-ui/core";
-// import { Logo } from "loft-taxi-mui-theme";
-// import { signupAction } from "../../modules/actions";
-// import Card from "../Card";
+import { Form, Field } from "react-final-form";
+import { TextField, Button } from "@mui/material";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-// import style from "./signup.module.css";
-
-// const useStyles = makeStyles({
-//   container: {
-//     paddingTop: "10vh",
-//     maxWidth: "1000px",
-//     alignItems: "center",
-//     display: "flex",
-//   },
-//   title: {
-//     fontSize: "36px",
-//     marginBottom: "30px",
-//   },
-//   subtitle: {
-//     marginBottom: "30px",
-//     display: "flex",
-//   },
-// });
+import {
+  validateEmail,
+  validatePassword,
+  validateName,
+} from "../../utils/validate";
 
 export const Signup = (props) => {
-  // const classes = useStyles();
-
-  // const handleSubmit = (email, password, name, surname) => {
-  //   props.signup({
-  //     email,
-  //     password,
-  //     name,
-  //     surname,
-  //   });
-  // };
+  const onSubmit = (email, password) => {};
 
   return (
     <>
-      Signup
-      {/* {props.authed ? (
-        <Redirect to="/map" />
-      ) : (
-        <div className={style.signup}>
-          <Container className={classes.container} maxWidth="md">
-            <Logo white />
-            <div className={style.card}>
-              <Typography variant="h2" className={classes.title}>
-                Регистрация
-              </Typography>
-              <Typography variant="subtitle2" className={classes.subtitle}>
-                Уже зарегестрированы?
-                <Link className={style.link} to="/login">
-                  Войти
-                </Link>
-              </Typography>
-              <Card handleSubmit={handleSubmit} mode="signup" />
-            </div>
-          </Container>
-        </div>
-      )} */}
+      <Form
+        onSubmit={onSubmit}
+        render={({ handleSubmit }) => (
+          <StyledForm onSubmit={handleSubmit}>
+            <h2>Sign up</h2>
+
+            <Field name="email" validate={validateEmail}>
+              {({ input, meta: { error, touched } }) => (
+                <TextField
+                  {...input}
+                  id="standard-basic"
+                  label="Email*"
+                  variant="standard"
+                  placeholder="mail@mail.ru"
+                  error={!!error && !!touched}
+                  helperText={touched ? error : ""}
+                />
+              )}
+            </Field>
+
+            <Field name="name" validate={validateName}>
+              {({ input, meta: { error, touched } }) => (
+                <TextField
+                  {...input}
+                  id="standard-basic"
+                  label="Name*"
+                  variant="standard"
+                  placeholder="mail@mail.ru"
+                  error={!!error && !!touched}
+                  helperText={touched ? error : ""}
+                />
+              )}
+            </Field>
+
+            <Field name="password" validate={validatePassword}>
+              {({ input, meta: { error, touched } }) => (
+                <TextField
+                  {...input}
+                  type="password"
+                  id="standard-basic"
+                  label="Password*"
+                  variant="standard"
+                  placeholder="*************"
+                  error={!!error && !!touched}
+                  helperText={touched ? error : ""}
+                />
+              )}
+            </Field>
+
+            <Button variant="contained">Sign up</Button>
+          </StyledForm>
+        )}
+      />
+      <Link to="/login">Log in</Link>
     </>
   );
 };
 
-// Signup.propTypes = {
-//   authed: PropTypes.bool,
-//   signup: PropTypes.func,
-// };
-
-// Signup.defaultProps = {
-//   authed: false,
-//   signup: () => {},
-// };
-
-// const mapStateToProps = (state) => ({
-//   authed: state.authed,
-// });
-
-// const mapDispathToProps = (dispatch) => ({
-//   signup: (user) => dispatch(signupAction(user)),
-// });
-
-// export default connect(mapStateToProps, mapDispathToProps)(Signup);
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-bottom: 30px;
+`;

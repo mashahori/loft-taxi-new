@@ -1,5 +1,6 @@
-import { Logo } from "../../icons";
-import { Auth } from "../../components"; //TODO ошибка тс
+import { Outlet } from "react-router-dom";
+
+import { Logo } from "icons";
 
 import * as S from "./styles";
 
@@ -10,7 +11,9 @@ export const Home = () => {
         <Logo />
       </S.Aside>
       <S.Main>
-        <Auth />
+        <S.Card>
+          <Outlet />
+        </S.Card>
       </S.Main>
     </S.Container>
   );
