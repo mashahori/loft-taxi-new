@@ -17,7 +17,7 @@ export const validateEmail = (value?: string) => {
 export const validateName = (value?: string) => {
   if (!value) return "Name is required";
 
-  if (!/^[a-zA-Z]+ [a-zA-Z]+$/.test(value)) {
+  if (!/^[a-zA-Z]+$/.test(value)) {
     return "Enter a valid name";
   }
 };

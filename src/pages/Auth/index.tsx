@@ -4,7 +4,7 @@ import { Logo } from "icons";
 
 import * as S from "./styles";
 
-export const Home = () => {
+export const Auth = () => {
   return (
     <S.Container>
       <S.Aside>

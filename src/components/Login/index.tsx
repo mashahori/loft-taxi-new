@@ -1,12 +1,19 @@
 import { Form, Field } from "react-final-form";
 import { TextField, Button } from "@mui/material";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-import { validateEmail, validatePassword } from "../../utils/validate";
+import { validateEmail, validatePassword } from "utils/validate";
+import { useLogin } from "api/queries/useLogin";
 
 export const Login = (props) => {
-  const onSubmit = (email, password) => {};
+  const { mutate, isIdle } = useLogin();
+  const navigate = useNavigate();
+
+  const onSubmit = ({ email, password }) => {
+    mutate({ email, password });
+    if (isIdle) navigate("/");
+  };
 
   return (
     <>
@@ -45,11 +52,13 @@ export const Login = (props) => {
               )}
             </Field>
 
-            <Button variant="contained">Log in</Button>
+            <Button type="submit" variant="contained">
+              Log in
+            </Button>
           </StyledForm>
         )}
       />
-      <Link to="/signup">Create new account</Link>
+      <Link to="/auth/signup">Create new account</Link>
     </>
   );
 };
