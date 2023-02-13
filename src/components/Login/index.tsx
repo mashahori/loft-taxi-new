@@ -6,13 +6,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { validateEmail, validatePassword } from "utils/validate";
 import { useLogin } from "api/queries/useLogin";
 
-export const Login = (props) => {
-  const { mutate, isIdle } = useLogin();
+export const Login = ({ onLogin }) => {
+  const { mutate } = useLogin(() => {
+    onLogin();
+    navigate("/");
+  });
   const navigate = useNavigate();
 
   const onSubmit = ({ email, password }) => {
     mutate({ email, password });
-    if (isIdle) navigate("/");
   };
 
   return (

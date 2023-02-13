@@ -1,13 +1,17 @@
 import { Form, Field } from "react-final-form";
 import { TextField, Button } from "@mui/material";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { validateEmail, validatePassword, validateName } from "utils/validate";
 import { useSignup } from "api/queries/useSignup";
 
-export const Signup = (props) => {
-  const { mutate } = useSignup();
+export const Signup = ({ onSignup }) => {
+  const { mutate } = useSignup(() => {
+    onSignup();
+    navigate("/");
+  });
+  const navigate = useNavigate();
 
   const onSubmit = ({ email, password, name, surname }) => {
     mutate({ email, password, name, surname });

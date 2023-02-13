@@ -8,5 +8,6 @@ export const useLogin = (callback?: () => void) =>
   useMutation((values) => apiClient.post("/auth", values), {
     onSuccess: (response) => {
       setToken(response.data.token);
+      if (callback) callback();
     },
   });

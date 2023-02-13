@@ -1,11 +1,11 @@
-import { FC } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { FC, useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 
 import { getToken } from "services/tokenService";
 import { Auth, Dashboard } from "pages";
-import { Login, Signup, Profile, Map } from "components";
+import { Login, Signup, Profile } from "components";
 
 import { ProtectedRoute } from "./ProtectedRoute";
 import { GlobalStyles } from "./global-styles";
@@ -13,15 +13,20 @@ import { GlobalStyles } from "./global-styles";
 const queryClient = new QueryClient();
 
 export const App: FC = () => {
-  const authed = Boolean(getToken());
+  const [authed, setAuthed] = useState(Boolean(getToken()));
 
-  console.log(authed);
   return (
     <QueryClientProvider client={queryClient}>
       <Routes>
         <Route path="/auth" element={<Auth />}>
-          <Route path="/auth/login" element={<Login />} />
-          <Route path="/auth/signup" element={<Signup />} />
+          <Route
+            path="/auth/login"
+            element={<Login onLogin={() => setAuthed(true)} />}
+          />
+          <Route
+            path="/auth/signup"
+            element={<Signup onSignup={() => setAuthed(true)} />}
+          />
         </Route>
         <Route
           path="/"
