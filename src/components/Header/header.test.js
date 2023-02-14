@@ -1,25 +1,25 @@
-import React from 'react';
-import '@testing-library/jest-dom/extend-expect';
-import { shallow } from 'enzyme';
-import Header from './Header.js';
+import React from "react";
+import "@testing-library/jest-dom/extend-expect";
+import { shallow } from "enzyme";
+import Header from "./index.js";
 
-describe('render a header', () => {
-  const routes = ['a', 'b', 'c'];
+describe("render a header", () => {
+  const routes = ["a", "b", "c"];
 
-  test('render <ul/>', () => {
+  test("render <ul/>", () => {
     const header = shallow(<Header routes={routes} />);
-    expect(header.find('ul')).toHaveLength(1);
+    expect(header.find("ul")).toHaveLength(1);
   });
 
-  test('not render <ul/>', () => {
+  test("not render <ul/>", () => {
     const routes = [];
 
     const header = shallow(<Header routes={routes} />);
-    expect(header.find('ul')).toHaveLength(0);
+    expect(header.find("ul")).toHaveLength(0);
   });
 
-  test('render <li/> 3 times', () => {
+  test("render <li/> 3 times", () => {
     const header = shallow(<Header routes={routes} />);
-    expect(header.find('li')).toHaveLength(3);
+    expect(header.find("li")).toHaveLength(3);
   });
 });

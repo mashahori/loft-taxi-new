@@ -1,12 +1,24 @@
-// import React, { PureComponent } from "react";
-// import PropTypes from "prop-types";
-// import mapboxgl from "mapbox-gl";
-// import MapCard from "./MapCard/MapCard.js";
-// import { connect } from "react-redux";
+import { FC } from "react";
+import { Map as MapGL } from "react-map-gl";
 
-// mapboxgl.accessToken =
-//   "pk.eyJ1IjoibXlha2ltZW5rbyIsImEiOiJjazV2NGs5bDQwOHBhM25sYjdoejN5YmlhIn0.jrA7S2ccVQ6ZuC3tU9wCbQ";
+import { MAP_TOKEN } from "constants/mapToken.js";
 
+import MapCard from "./MapCard/MapCard.js";
+
+export const Map: FC = () => {
+  return (
+    <MapGL
+      initialViewState={{
+        longitude: 24.938379,
+        latitude: 60.169857,
+        zoom: 12,
+      }}
+      style={{ height: "100vh" }}
+      mapStyle="mapbox://styles/mapbox/streets-v9"
+      mapboxAccessToken={MAP_TOKEN}
+    />
+  );
+};
 // class Map extends PureComponent {
 //   constructor(props) {
 //     super(props);
@@ -16,7 +28,7 @@
 //       zoom: 12,
 //     };
 
-//     this.mapRef = React.createRef();
+//     this.mapRef = createRef();
 //   }
 
 //   static propTypes = {
@@ -49,7 +61,7 @@
 //   }
 
 //   render() {
-//     const { cardIsExist } = this.props;
+//     // const { cardIsExist } = this.props;
 //     return (
 //       <>
 //         <div
@@ -57,16 +69,8 @@
 //           style={{ height: "100vh", width: "100vw" }}
 //           data-testid="map"
 //         />
-//         {!cardIsExist && <MapCard />}
+//         {/* {!cardIsExist && <MapCard />} */}
 //       </>
 //     );
 //   }
 // }
-
-// const mapStateToProps = (state) => ({
-//   cardIsExist: state.cardIsExist,
-// });
-
-export const Map = () => <>mapmap</>;
-
-// export default connect(mapStateToProps)(Map);

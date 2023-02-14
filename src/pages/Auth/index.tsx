@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 
-import { Logo } from "icons";
+import { LogoMain } from "icons";
 
 import * as S from "./styles";
 
@@ -8,7 +8,7 @@ export const Auth = () => {
   return (
     <S.Container>
       <S.Aside>
-        <Logo />
+        <LogoMain />
       </S.Aside>
       <S.Main>
         <S.Card>

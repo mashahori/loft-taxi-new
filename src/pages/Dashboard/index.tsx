@@ -1,21 +1,13 @@
+import { FC } from "react";
 import { Outlet } from "react-router-dom";
 
-import { Logo } from "icons";
+import { Header } from "components";
 
-import * as S from "./styles";
-
-export const Dashboard = () => {
+export const Dashboard: FC = () => {
   return (
-    <>map</>
-    // <S.Container>
-    //   <S.Aside>
-    //     <Logo />
-    //   </S.Aside>
-    //   <S.Main>
-    //     <S.Card>
-    //       <Outlet />
-    //     </S.Card>
-    //   </S.Main>
-    // </S.Container>
+    <>
+      <Header />
+      <Outlet />
+    </>
   );
 };

@@ -5,7 +5,7 @@ import { ReactQueryDevtools } from "react-query/devtools";
 
 import { getToken } from "services/tokenService";
 import { Auth, Dashboard } from "pages";
-import { Login, Signup, Profile } from "components";
+import { Login, Signup, Profile, Map } from "components";
 
 import { ProtectedRoute } from "./ProtectedRoute";
 import { GlobalStyles } from "./global-styles";
@@ -35,18 +35,13 @@ export const App: FC = () => {
               <Dashboard />
             </ProtectedRoute>
           }
-        />
-        <Route
-          path="/profile"
-          element={
-            <ProtectedRoute redirectPath="/auth/login" isAllowed={authed}>
-              <Profile />
-            </ProtectedRoute>
-          }
-        />
+        >
+          <Route path="/map" element={<Map />} />
+          <Route path="/profile" element={<Profile />} />
+        </Route>
         <Route path="*" element={<p>There's nothing here: 404!</p>} />
       </Routes>
-      <ReactQueryDevtools initialIsOpen={true} />
+      <ReactQueryDevtools />
       <GlobalStyles />
     </QueryClientProvider>
   );
