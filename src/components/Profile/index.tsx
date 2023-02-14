@@ -7,6 +7,9 @@
 // import style from "./Profile.module.css";
 // import ProfileCard from "./ProfileCard/ProfileCard.js";
 // import { addCardAction } from "../../modules/actions.js";
+import { Card } from "ui/Card";
+
+import * as S from "./styles";
 
 // const useStyles = makeStyles({
 //   wrapper: {
@@ -96,6 +99,17 @@
 //   addCard: (card) => dispatch(addCardAction(card)),
 // });
 
-export const Profile = () => <>profile</>;
+export const Profile = () => {
+  return (
+    <S.Container>
+      <S.Wrapper>
+        <Card>
+          <S.Title>Профиль</S.Title>
+          <S.Text>Введите платежные данные</S.Text>
+        </Card>
+      </S.Wrapper>
+    </S.Container>
+  );
+};
 
 // export default connect(mapStateToProps, mapDispathToProps)(Profile);
