@@ -5,7 +5,8 @@ import { ReactQueryDevtools } from "react-query/devtools";
 
 import { getToken } from "services/tokenService";
 import { Auth, Dashboard } from "pages";
-import { Login, Signup, Profile, Map } from "components";
+import { Profile, Map } from "components";
+import { LoginForm, SignupForm } from "forms";
 
 import { ProtectedRoute } from "./ProtectedRoute";
 import { GlobalStyles } from "./global-styles";
@@ -21,11 +22,11 @@ export const App: FC = () => {
         <Route path="/auth" element={<Auth />}>
           <Route
             path="/auth/login"
-            element={<Login onLogin={() => setAuthed(true)} />}
+            element={<LoginForm onLogin={() => setAuthed(true)} />}
           />
           <Route
             path="/auth/signup"
-            element={<Signup onSignup={() => setAuthed(true)} />}
+            element={<SignupForm onSignup={() => setAuthed(true)} />}
           />
         </Route>
         <Route

@@ -17,7 +17,38 @@ export const validateEmail = (value?: string) => {
 export const validateName = (value?: string) => {
   if (!value) return "Name is required";
 
-  if (!/^[a-zA-Z]+$/.test(value)) {
+  if (
+    !/^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)/.test(
+      value
+    )
+  ) {
     return "Enter a valid name";
   }
+};
+
+export const validateCard = (value?: string) => {
+  if (!value) return "Card number is required";
+
+  const trimedValue = value.replace(/ /g, "");
+
+  if (
+    !/^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))$/.test(
+      trimedValue
+    )
+  )
+    return "Enter a valid card number";
+};
+
+export const validateDate = (value?: string) => {
+  if (!value) return "Expire date is required";
+
+  // if (!/^[a-zA-Z]+$/.test(value)) {
+  //   return "Enter a valid name";
+  // }
+};
+
+export const validateCVV = (value?: string) => {
+  if (!value) return "CVV date is required";
+
+  if (value.length !== 3) return "Enter a valid CVV";
 };

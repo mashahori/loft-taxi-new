@@ -6,10 +6,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { validateEmail, validatePassword } from "utils/validate";
 import { useLogin } from "api/queries/useLogin";
 
-export const Login = ({ onLogin }) => {
+export const LoginForm = ({ onLogin }) => {
   const { mutate } = useLogin(() => {
     onLogin();
-    navigate("/");
+    navigate("/map");
   });
   const navigate = useNavigate();
 

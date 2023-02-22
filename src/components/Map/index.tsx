@@ -3,7 +3,7 @@ import { Map as MapGL } from "react-map-gl";
 
 import { MAP_TOKEN } from "constants/mapToken";
 
-import { MapCard } from "./MapCard";
+import { MapCard } from "../MapCard";
 
 export const Map: FC = () => {
   return (

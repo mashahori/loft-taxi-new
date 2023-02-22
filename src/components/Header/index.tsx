@@ -13,7 +13,7 @@ export const Header = () => {
       <nav>
         <S.List>
           {HEADER_ITEMS.map(({ text, path }: IHeaderItem) => (
-            <li>
+            <li key={path}>
               <Navigation text={text} path={path} />
             </li>
           ))}
