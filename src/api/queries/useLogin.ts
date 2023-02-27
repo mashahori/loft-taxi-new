@@ -1,5 +1,4 @@
 import { useMutation } from "react-query";
-import { redirect } from "react-router-dom";
 
 import { setToken } from "services/tokenService";
 import { apiClient } from "api/apiClient";
