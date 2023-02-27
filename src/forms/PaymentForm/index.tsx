@@ -1,7 +1,6 @@
 import { Form, Field } from "react-final-form";
 import { TextField, Button } from "@mui/material";
-import styled from "styled-components";
-import { Link, useNavigate } from "react-router-dom";
+import formatString from "format-string-by-pattern";
 
 import {
   validateName,
@@ -9,8 +8,6 @@ import {
   validateDate,
   validateCVV,
 } from "utils/validate";
-import { useLogin } from "api/queries/useLogin";
-import formatString from "format-string-by-pattern";
 
 import * as S from "./styles";
 
@@ -22,11 +19,11 @@ export const PaymentForm = ({ onSaveCard }) => {
           onSubmit={onSaveCard}
           render={({ handleSubmit }) => (
             <S.StyledForm onSubmit={handleSubmit}>
-              <Field name="name" validate={validateName}>
+              <Field name="cardName" validate={validateName}>
                 {({ input, meta: { error, touched } }) => (
                   <TextField
                     {...input}
-                    id="name"
+                    id="cardName"
                     label="Name on card"
                     variant="standard"
                     placeholder="John Smith"
@@ -37,17 +34,17 @@ export const PaymentForm = ({ onSaveCard }) => {
               </Field>
 
               <Field
-                name="card"
+                name="cardNumber"
                 validate={validateCard}
-                parse={formatString("1234 5678 9012 3456")}
+                parse={formatString("5123 4567 8901 2345")}
               >
                 {({ input, meta: { error, touched } }) => (
                   <TextField
                     {...input}
-                    id="card"
+                    id="cardNumber"
                     label="Card number (MasterCard)"
                     variant="standard"
-                    placeholder="1234 5678 9012 3456"
+                    placeholder="5123 4567 8901 2345"
                     error={!!error && !!touched}
                     helperText={touched ? error : ""}
                   />
@@ -56,14 +53,14 @@ export const PaymentForm = ({ onSaveCard }) => {
 
               <S.Wrapper>
                 <Field
-                  name="date"
+                  name="expiryDate"
                   validate={validateDate}
                   parse={formatString("MM/YY")}
                 >
                   {({ input, meta: { error, touched } }) => (
                     <TextField
                       {...input}
-                      id="date"
+                      id="expiryDate"
                       label="Expire date"
                       variant="standard"
                       placeholder="MM/YY"
@@ -74,14 +71,14 @@ export const PaymentForm = ({ onSaveCard }) => {
                 </Field>
 
                 <Field
-                  name="cvv"
+                  name="cvc"
                   validate={validateCVV}
                   parse={formatString("123")}
                 >
                   {({ input, meta: { error, touched } }) => (
                     <TextField
                       {...input}
-                      id="cvv"
+                      id="cvc"
                       label="CVC/CVV"
                       variant="standard"
                       placeholder="123"
@@ -94,14 +91,13 @@ export const PaymentForm = ({ onSaveCard }) => {
                   )}
                 </Field>
               </S.Wrapper>
+              <Button type="submit" variant="contained">
+                Save
+              </Button>
             </S.StyledForm>
           )}
         />
-        {/* <PaymentInfo /> */}
       </S.Container>
-      <Button type="submit" variant="contained">
-        Save
-      </Button>
     </>
   );
 };
