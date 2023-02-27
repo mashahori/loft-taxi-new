@@ -12,14 +12,16 @@ import {
 import { useLogin } from "api/queries/useLogin";
 import formatString from "format-string-by-pattern";
 
+import * as S from "./styles";
+
 export const PaymentForm = ({ onSaveCard }) => {
   return (
     <>
-      <Conteiner>
+      <S.Container>
         <Form
           onSubmit={onSaveCard}
           render={({ handleSubmit }) => (
-            <StyledForm onSubmit={handleSubmit}>
+            <S.StyledForm onSubmit={handleSubmit}>
               <Field name="name" validate={validateName}>
                 {({ input, meta: { error, touched } }) => (
                   <TextField
@@ -52,7 +54,7 @@ export const PaymentForm = ({ onSaveCard }) => {
                 )}
               </Field>
 
-              <Wrapper>
+              <S.Wrapper>
                 <Field
                   name="date"
                   validate={validateDate}
@@ -91,36 +93,15 @@ export const PaymentForm = ({ onSaveCard }) => {
                     />
                   )}
                 </Field>
-              </Wrapper>
-            </StyledForm>
+              </S.Wrapper>
+            </S.StyledForm>
           )}
         />
         {/* <PaymentInfo /> */}
-      </Conteiner>
+      </S.Container>
       <Button type="submit" variant="contained">
         Save
       </Button>
     </>
   );
 };
-
-const StyledForm = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  margin-bottom: 30px;
-  max-width: 300px;
-`;
-
-const Conteiner = styled.form`
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  margin-bottom: 30px;
-`;
-
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  gap: 35px;
-`;

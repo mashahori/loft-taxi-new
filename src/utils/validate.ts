@@ -42,9 +42,9 @@ export const validateCard = (value?: string) => {
 export const validateDate = (value?: string) => {
   if (!value) return "Expire date is required";
 
-  // if (!/^[a-zA-Z]+$/.test(value)) {
-  //   return "Enter a valid name";
-  // }
+  if (!/^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/.test(value)) {
+    return "Enter a valid date";
+  }
 };
 
 export const validateCVV = (value?: string) => {
