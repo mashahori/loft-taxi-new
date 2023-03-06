@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { Form, Field } from "react-final-form";
 import { TextField, Button } from "@mui/material";
 import formatString from "format-string-by-pattern";
@@ -8,10 +9,15 @@ import {
   validateDate,
   validateCVV,
 } from "utils/validate";
+import { IPaymentForm } from "app/types";
 
 import * as S from "./styles";
 
-export const PaymentForm = ({ onSaveCard }) => {
+interface IPaymentSave {
+  onSaveCard: (values: IPaymentForm) => void;
+}
+
+export const PaymentForm: FC<IPaymentSave> = ({ onSaveCard }) => {
   return (
     <>
       <S.Container>

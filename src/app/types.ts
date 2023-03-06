@@ -10,3 +10,14 @@ export interface CardInfo {
   id: string;
   cvc: string;
 }
+
+export interface IPaymentForm {
+  cardName: string;
+  cardNumber: string;
+  expiryDate: string;
+  cvc: string;
+}
+
+export interface IToken {
+  token: string | null;
+}
