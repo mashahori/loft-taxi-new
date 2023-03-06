@@ -8,7 +8,7 @@ export const StyledForm = styled.form`
   max-width: 300px;
 `;
 
-export const Container = styled.form`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 25px;
