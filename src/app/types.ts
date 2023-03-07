@@ -3,7 +3,7 @@ export interface IHeaderItem {
   text: string;
 }
 
-export interface CardInfo {
+export interface ICardInfo {
   cardName: string;
   expiryDate: string;
   cardNumber: string;

@@ -3,12 +3,7 @@ import { AxiosError, AxiosResponse } from "axios";
 
 import { getToken } from "services/tokenService";
 import { apiClient } from "api/apiClient";
-import { CardInfo } from "app/types";
-
-// type GetCard = () => UseQueryResult<
-//   AxiosResponse<{ data: CardInfo }>,
-//   AxiosError<{ error: string }>
-// >;
+import { ICardInfo } from "app/types";
 
 export const useGetCard = (callback?: () => void) => {
   const { data, ...rest } = useQuery(
@@ -20,5 +15,5 @@ export const useGetCard = (callback?: () => void) => {
     }
   );
 
-  return { data, ...rest };
+  return { data: data?.data, ...rest };
 };
