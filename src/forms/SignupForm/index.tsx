@@ -3,7 +3,12 @@ import { TextField, Button } from "@mui/material";
 import styled from "styled-components";
 import { Link, useNavigate } from "react-router-dom";
 
-import { validateEmail, validatePassword, validateName } from "utils/validate";
+import {
+  validateEmail,
+  validatePassword,
+  validateName,
+  validateSurname,
+} from "utils/validate";
 import { useSignup } from "api/queries/useSignup";
 
 export const SignupForm = ({ onSignup }) => {
@@ -53,7 +58,7 @@ export const SignupForm = ({ onSignup }) => {
               )}
             </Field>
 
-            <Field name="surname" validate={validateName}>
+            <Field name="surname" validate={validateSurname}>
               {({ input, meta: { error, touched } }) => (
                 <TextField
                   {...input}
