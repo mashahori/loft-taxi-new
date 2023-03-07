@@ -4,7 +4,7 @@ import { TextField, Button } from "@mui/material";
 import formatString from "format-string-by-pattern";
 
 import {
-  validateName,
+  validatePaymentName,
   validateCard,
   validateDate,
   validateCVV,
@@ -25,7 +25,7 @@ export const PaymentForm: FC<IPaymentSave> = ({ onSaveCard }) => {
           onSubmit={onSaveCard}
           render={({ handleSubmit }) => (
             <S.StyledForm onSubmit={handleSubmit}>
-              <Field name="cardName" validate={validateName}>
+              <Field name="cardName" validate={validatePaymentName}>
                 {({ input, meta: { error, touched } }) => (
                   <TextField
                     {...input}

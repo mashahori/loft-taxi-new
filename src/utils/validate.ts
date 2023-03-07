@@ -1,4 +1,6 @@
-export const validatePassword = (value: string) => {
+type IValidation = string | undefined;
+
+export const validatePassword = (value: string): IValidation => {
   if (!value) return "Password is required";
 
   if (!/[a-z]/.test(value)) return "At least 1 symbol";
@@ -7,14 +9,14 @@ export const validatePassword = (value: string) => {
   if (value.length < 5) return "At least 5 characters";
 };
 
-export const validateEmail = (value?: string) => {
+export const validateEmail = (value?: string): IValidation => {
   if (!value) return "Email is required";
   if (!/^[a-zA-Z0-9\\+._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,}$/.test(value)) {
     return "Enter a valid email";
   }
 };
 
-export const validateName = (value?: string) => {
+export const validatePaymentName = (value?: string): IValidation => {
   if (!value) return "Name is required";
 
   if (
@@ -26,7 +28,23 @@ export const validateName = (value?: string) => {
   }
 };
 
-export const validateCard = (value?: string) => {
+export const validateName = (value?: string): IValidation => {
+  if (!value) return "Name is required";
+
+  if (!/^[a-z ,.'-]+$/i.test(value)) {
+    return "Enter a valid name";
+  }
+};
+
+export const validateSurname = (value?: string): IValidation => {
+  if (!value) return "Surname is required";
+
+  if (!/^[a-z ,.'-]+$/i.test(value)) {
+    return "Enter a valid surname";
+  }
+};
+
+export const validateCard = (value?: string): IValidation => {
   if (!value) return "Card number is required";
 
   const trimedValue = value.replace(/ /g, "");
@@ -39,7 +57,7 @@ export const validateCard = (value?: string) => {
     return "Enter a valid card number";
 };
 
-export const validateDate = (value?: string) => {
+export const validateDate = (value?: string): IValidation => {
   if (!value) return "Expire date is required";
 
   if (!/^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/.test(value)) {
@@ -47,7 +65,7 @@ export const validateDate = (value?: string) => {
   }
 };
 
-export const validateCVV = (value?: string) => {
+export const validateCVV = (value?: string): IValidation => {
   if (!value) return "CVV date is required";
 
   if (value.length !== 3) return "Enter a valid CVV";
