@@ -22,7 +22,6 @@ export const Text = styled.p`
 
 export const Wrapper = styled.div`
   width: 900px;
-  height: 600px;
   margin: 0 auto;
   text-align: center;
 `;

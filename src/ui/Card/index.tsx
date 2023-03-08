@@ -1,10 +1,18 @@
-import { FC } from "react";
+import { FC, ReactNode } from "react";
 import styled from "styled-components";
 
-export const Card: FC = ({ children }) => <StyledCard>{children}</StyledCard>;
+interface ICard {
+  children: ReactNode;
+  height?: number;
+}
 
-const StyledCard = styled.div`
+export const Card: FC<ICard> = ({ children, height }) => (
+  <StyledCard height={height}>{children}</StyledCard>
+);
+
+const StyledCard = styled.div<{ height?: number }>`
   padding: 40px;
   background-color: #fff;
   border-radius: 10px;
+  height: ${(p) => p.height}px;
 `;
