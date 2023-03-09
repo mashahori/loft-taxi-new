@@ -21,14 +21,21 @@ export const Profile: FC = () => {
 
   return (
     <S.Container>
-      <S.Wrapper>
-        <Card>
+      <Card height={600}>
+        <S.Wrapper>
           <S.Title>Профиль</S.Title>
           <S.Text>Введите платежные данные</S.Text>
-          <PaymentForm onSaveCard={handleSaveCard} />
-          {data && <PaymentInfo info={data.data} />}
-        </Card>
-      </S.Wrapper>
+          <S.Flex>
+            <PaymentForm onSaveCard={handleSaveCard} />
+            {data && (
+              <PaymentInfo
+                cardNumber={data.cardNumber}
+                expiryDate={data.expiryDate}
+              />
+            )}
+          </S.Flex>
+        </S.Wrapper>
+      </Card>
     </S.Container>
   );
 };

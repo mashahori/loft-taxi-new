@@ -9,6 +9,9 @@ export const Title = styled.h1`
 export const Container = styled.div`
   height: 100vh;
   background-image: url("/profile_bg.svg");
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
 `;
 
 export const Text = styled.p`
@@ -19,8 +22,11 @@ export const Text = styled.p`
 
 export const Wrapper = styled.div`
   width: 900px;
-  height: 600px;
   margin: 0 auto;
-  padding-top: 100px;
   text-align: center;
+`;
+
+export const Flex = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;
