@@ -12,3 +12,14 @@ export const List = styled.ul`
   display: flex;
   justify-content: space-between;
 `;
+
+export const Button = styled.button`
+  color: #fff;
+  text-decoration: none;
+  padding: 20px 40px;
+  cursor: pointer;
+
+  &:hover {
+    color: #fdbf5a;
+  }
+`;

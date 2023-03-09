@@ -3,9 +3,13 @@ import { Map as MapGL } from "react-map-gl";
 
 import { MAP_TOKEN } from "constants/mapToken";
 
-import { MapCard } from "../MapCard";
+import { MapCard } from "components/MapCard";
+import { useGetCard } from "api/queries";
+import { OrderTaxiForm } from "forms";
 
 export const Map: FC = () => {
+  const { status, data, error, refetch, isSuccess } = useGetCard();
+
   return (
     <>
       <MapGL
@@ -18,7 +22,7 @@ export const Map: FC = () => {
         mapStyle="mapbox://styles/mapbox/streets-v9"
         mapboxAccessToken={MAP_TOKEN}
       />
-      <MapCard />
+      {isSuccess ? <OrderTaxiForm /> : <MapCard />}
     </>
   );
 };

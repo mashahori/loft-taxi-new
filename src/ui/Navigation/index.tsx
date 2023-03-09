@@ -1,11 +1,14 @@
-import { FC } from "react";
+import { FC, ReactElement } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import { IHeaderItem } from "app/types";
+interface INavigation {
+  children: ReactElement | string;
+  path: string;
+}
 
-export const Navigation: FC<IHeaderItem> = ({ text, path }) => (
-  <StyledLink to={path}>{text}</StyledLink>
+export const Navigation: FC<INavigation> = ({ children, path }) => (
+  <StyledLink to={path}>{children}</StyledLink>
 );
 
 const StyledLink = styled(Link)`

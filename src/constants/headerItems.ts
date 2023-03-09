@@ -7,8 +7,4 @@ export const HEADER_ITEMS = [
     text: "Profile",
     path: "profile",
   },
-  {
-    text: "Log out",
-    path: "logout",
-  },
 ];
