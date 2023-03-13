@@ -9,4 +9,6 @@ export const useSignup = (callback?: () => void) =>
       setToken(response.data.token);
       if (callback) callback();
     },
+    retry: false,
+    refetchOnWindowFocus: false,
   });

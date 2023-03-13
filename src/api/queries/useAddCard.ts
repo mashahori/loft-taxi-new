@@ -10,5 +10,7 @@ export const useAddCard = (callback?: () => void) =>
       onSuccess: () => {
         if (callback) callback();
       },
+      retry: false,
+      refetchOnWindowFocus: false,
     }
   );

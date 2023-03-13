@@ -13,7 +13,7 @@ import * as S from "./styles";
 export const Profile: FC = () => {
   const { status, data, error, refetch } = useGetCard();
 
-  const { mutate } = useAddCard(() => refetch());
+  const { mutate, isLoading } = useAddCard(() => refetch());
 
   const handleSaveCard = (values: IPaymentForm) => {
     mutate({ ...values, token: getToken() });
@@ -26,7 +26,7 @@ export const Profile: FC = () => {
           <S.Title>Профиль</S.Title>
           <S.Text>Введите платежные данные</S.Text>
           <S.Flex>
-            <PaymentForm onSaveCard={handleSaveCard} />
+            <PaymentForm onSaveCard={handleSaveCard} isLoading={isLoading} />
             {data && (
               <PaymentInfo
                 cardNumber={data.cardNumber}

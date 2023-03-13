@@ -5,9 +5,10 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { validateEmail, validatePassword } from "utils/validate";
 import { useLogin } from "api/queries/useLogin";
+import { ButtonLoader } from "ui";
 
 export const LoginForm = ({ onLogin }) => {
-  const { mutate } = useLogin(() => {
+  const { mutate, isLoading } = useLogin(() => {
     onLogin();
     navigate("/map");
   });
@@ -55,7 +56,7 @@ export const LoginForm = ({ onLogin }) => {
             </Field>
 
             <Button type="submit" variant="contained">
-              Log in
+              {isLoading ? <ButtonLoader /> : "Log in"}
             </Button>
           </StyledForm>
         )}

@@ -10,14 +10,20 @@ import {
   validateCVV,
 } from "utils/validate";
 import { IPaymentForm } from "app/types";
+import { ButtonLoader } from "ui";
+import { Card } from "ui/Card";
+import { useAddCard, useGetCard } from "api/queries";
+import { getToken } from "services/tokenService";
+import { PaymentInfo } from "components/PaymentInfo";
 
 import * as S from "./styles";
 
 interface IPaymentSave {
   onSaveCard: (values: IPaymentForm) => void;
+  isLoading: boolean;
 }
 
-export const PaymentForm: FC<IPaymentSave> = ({ onSaveCard }) => {
+export const PaymentForm: FC<IPaymentSave> = ({ onSaveCard, isLoading }) => {
   return (
     <>
       <S.Container>
@@ -98,7 +104,7 @@ export const PaymentForm: FC<IPaymentSave> = ({ onSaveCard }) => {
                 </Field>
               </S.Wrapper>
               <Button type="submit" variant="contained">
-                Save
+                {isLoading ? <ButtonLoader /> : "Save"}
               </Button>
             </S.StyledForm>
           )}

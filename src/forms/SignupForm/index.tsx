@@ -10,9 +10,10 @@ import {
   validateSurname,
 } from "utils/validate";
 import { useSignup } from "api/queries/useSignup";
+import { ButtonLoader } from "ui";
 
 export const SignupForm = ({ onSignup }) => {
-  const { mutate } = useSignup(() => {
+  const { mutate, isLoading } = useSignup(() => {
     onSignup();
     navigate("/map");
   });
@@ -88,7 +89,7 @@ export const SignupForm = ({ onSignup }) => {
             </Field>
 
             <Button type="submit" variant="contained">
-              Sign up
+              {isLoading ? <ButtonLoader /> : "Sign up"}
             </Button>
           </StyledForm>
         )}
