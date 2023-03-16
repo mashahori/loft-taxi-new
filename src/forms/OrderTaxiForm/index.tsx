@@ -1,110 +1,78 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Form, Field } from "react-final-form";
-import { TextField, Button } from "@mui/material";
-import formatString from "format-string-by-pattern";
+import { Button, Select, SelectChangeEvent, MenuItem } from "@mui/material";
 
-import {
-  validatePaymentName,
-  validateCard,
-  validateDate,
-  validateCVV,
-} from "utils/validate";
-import { IPaymentForm } from "app/types";
+// import { IPaymentForm } from "app/types";
+import { Card } from "ui";
 
 import * as S from "./styles";
 
-interface IPaymentSave {
-  onSaveCard: (values: IPaymentForm) => void;
-}
+// interface IPaymentSave {
+//   onSaveCard: (values: IPaymentForm) => void;
+// }
 
-export const OrderTaxiForm: FC<IPaymentSave> = () => {
+export const OrderTaxiForm: FC = () => {
+  const [start, setStart] = useState("");
+  const [end, setEnd] = useState("");
+
+  const handleChangeStart = (event: SelectChangeEvent) => {
+    setStart(event.target.value);
+  };
+
+  const handleChangeEnd = (event: SelectChangeEvent) => {
+    setEnd(event.target.value);
+  };
+
   return (
-    <>
-      <S.Container>
-        ,jhv
-        {/* <Form
-          onSubmit={onSaveCard}
+    <S.Container>
+      <Card>
+        <Form
+          onSubmit={() => {}}
           render={({ handleSubmit }) => (
             <S.StyledForm onSubmit={handleSubmit}>
-              <Field name="cardName" validate={validatePaymentName}>
+              <Field name="address1">
                 {({ input, meta: { error, touched } }) => (
-                  <TextField
-                    {...input}
-                    id="cardName"
-                    label="Name on card"
+                  <Select
+                    value={start}
+                    onChange={handleChangeStart}
+                    label="Start"
                     variant="standard"
-                    placeholder="John Smith"
-                    error={!!error && !!touched}
-                    helperText={touched ? error : ""}
-                  />
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    <MenuItem value={10}>Ten</MenuItem>
+                    <MenuItem value={20}>Twenty</MenuItem>
+                    <MenuItem value={30}>Thirty</MenuItem>
+                  </Select>
                 )}
               </Field>
 
-              <Field
-                name="cardNumber"
-                validate={validateCard}
-                parse={formatString("5123 4567 8901 2345")}
-              >
+              <Field name="address2">
                 {({ input, meta: { error, touched } }) => (
-                  <TextField
-                    {...input}
-                    id="cardNumber"
-                    label="Card number (MasterCard)"
+                  <Select
+                    value={end}
+                    onChange={handleChangeEnd}
+                    label="End"
                     variant="standard"
-                    placeholder="5123 4567 8901 2345"
-                    error={!!error && !!touched}
-                    helperText={touched ? error : ""}
-                  />
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    <MenuItem value={10}>Ten</MenuItem>
+                    <MenuItem value={20}>Twenty</MenuItem>
+                    <MenuItem value={30}>Thirty</MenuItem>
+                  </Select>
                 )}
               </Field>
 
-              <S.Wrapper>
-                <Field
-                  name="expiryDate"
-                  validate={validateDate}
-                  parse={formatString("MM/YY")}
-                >
-                  {({ input, meta: { error, touched } }) => (
-                    <TextField
-                      {...input}
-                      id="expiryDate"
-                      label="Expire date"
-                      variant="standard"
-                      placeholder="MM/YY"
-                      error={!!error && !!touched}
-                      helperText={touched ? error : ""}
-                    />
-                  )}
-                </Field>
-
-                <Field
-                  name="cvc"
-                  validate={validateCVV}
-                  parse={formatString("123")}
-                >
-                  {({ input, meta: { error, touched } }) => (
-                    <TextField
-                      {...input}
-                      id="cvc"
-                      label="CVC/CVV"
-                      variant="standard"
-                      placeholder="123"
-                      error={!!error && !!touched}
-                      helperText={touched ? error : ""}
-                      inputProps={{
-                        maxLength: 3,
-                      }}
-                    />
-                  )}
-                </Field>
-              </S.Wrapper>
               <Button type="submit" variant="contained">
-                Save
+                Get Taxi
               </Button>
             </S.StyledForm>
           )}
-        /> */}
-      </S.Container>
-    </>
+        />
+      </Card>
+    </S.Container>
   );
 };
