@@ -15,9 +15,3 @@ export const Container = styled.div`
   left: 70px;
   width: 400px;
 `;
-
-export const Wrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  gap: 35px;
-`;

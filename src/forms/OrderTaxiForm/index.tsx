@@ -4,6 +4,7 @@ import { Button, Select, SelectChangeEvent, MenuItem } from "@mui/material";
 
 // import { IPaymentForm } from "app/types";
 import { Card } from "ui";
+import { useGetAddresses } from "api/queries";
 
 import * as S from "./styles";
 
@@ -14,6 +15,8 @@ import * as S from "./styles";
 export const OrderTaxiForm: FC = () => {
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
+
+  const { data } = useGetAddresses();
 
   const handleChangeStart = (event: SelectChangeEvent) => {
     setStart(event.target.value);
@@ -38,12 +41,9 @@ export const OrderTaxiForm: FC = () => {
                     label="Start"
                     variant="standard"
                   >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
+                    {data?.addresses?.map((el: string) => (
+                      <MenuItem value={el}>{el}</MenuItem>
+                    ))}
                   </Select>
                 )}
               </Field>
@@ -56,12 +56,9 @@ export const OrderTaxiForm: FC = () => {
                     label="End"
                     variant="standard"
                   >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={10}>Ten</MenuItem>
-                    <MenuItem value={20}>Twenty</MenuItem>
-                    <MenuItem value={30}>Thirty</MenuItem>
+                    {data?.addresses?.map((el: string) => (
+                      <MenuItem value={el}>{el}</MenuItem>
+                    ))}
                   </Select>
                 )}
               </Field>
