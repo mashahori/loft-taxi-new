@@ -4,7 +4,7 @@ import { Button, Select, SelectChangeEvent, MenuItem } from "@mui/material";
 
 // import { IPaymentForm } from "app/types";
 import { Card } from "ui";
-import { useGetAddresses } from "api/queries";
+import { useGetAddresses, useOrderTaxi } from "api/queries";
 
 import * as S from "./styles";
 
@@ -12,7 +12,7 @@ import * as S from "./styles";
 //   onSaveCard: (values: IPaymentForm) => void;
 // }
 
-export const OrderTaxiForm: FC = () => {
+export const OrderTaxiForm: FC = ({ handleOrderTaxi }) => {
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
 
@@ -26,11 +26,14 @@ export const OrderTaxiForm: FC = () => {
     setEnd(event.target.value);
   };
 
+  const handleSubmit = () =>
+    handleOrderTaxi({ address1: start, address2: end });
+
   return (
     <S.Container>
       <Card>
         <Form
-          onSubmit={() => {}}
+          onSubmit={handleSubmit}
           render={({ handleSubmit }) => (
             <S.StyledForm onSubmit={handleSubmit}>
               <Field name="address1">
