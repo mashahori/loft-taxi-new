@@ -2,17 +2,17 @@ import { FC, useState } from "react";
 import { Form, Field } from "react-final-form";
 import { Button, Select, SelectChangeEvent, MenuItem } from "@mui/material";
 
-// import { IPaymentForm } from "app/types";
 import { Card } from "ui";
-import { useGetAddresses, useOrderTaxi } from "api/queries";
+import { useGetAddresses } from "api/queries";
+import { IAddressesPayload } from "utils/types";
 
 import * as S from "./styles";
 
-// interface IPaymentSave {
-//   onSaveCard: (values: IPaymentForm) => void;
-// }
+interface IOrderTaxiProps {
+  handleOrderTaxi: (values: IAddressesPayload) => void;
+}
 
-export const OrderTaxiForm: FC = ({ handleOrderTaxi }) => {
+export const OrderTaxiForm: FC<IOrderTaxiProps> = ({ handleOrderTaxi }) => {
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
 

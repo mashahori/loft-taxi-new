@@ -20,7 +20,5 @@ export const useOrderTaxi = (callback?: () => void) =>
       onSuccess: () => {
         if (callback) callback();
       },
-      retry: false,
-      refetchOnWindowFocus: false,
     }
   );

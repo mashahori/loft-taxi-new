@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { Form, Field } from "react-final-form";
 import { TextField, Button } from "@mui/material";
 import styled from "styled-components";
@@ -7,7 +8,11 @@ import { validateEmail, validatePassword } from "utils/validate";
 import { useLogin } from "api/queries/useLogin";
 import { ButtonLoader } from "ui";
 
-export const LoginForm = ({ onLogin }) => {
+interface ILoginForm {
+  onLogin: () => void;
+}
+
+export const LoginForm: FC<ILoginForm> = ({ onLogin }) => {
   const { mutate, isLoading } = useLogin(() => {
     onLogin();
     navigate("/map");

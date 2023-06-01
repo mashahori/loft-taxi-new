@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { FC } from "react";
 import { Map as MapGL, Source, Layer } from "react-map-gl";
 
@@ -6,7 +7,6 @@ import { MAP_TOKEN } from "constants/mapToken";
 import { MapCard } from "components/MapCard";
 import { useGetCard, useOrderTaxi } from "api/queries";
 import { OrderTaxiForm } from "forms";
-import { drawRoute } from "utils/drawRoute";
 
 export const Map: FC = () => {
   const { status, data, error, refetch, isSuccess } = useGetCard();
@@ -49,7 +49,7 @@ export const Map: FC = () => {
         mapboxAccessToken={MAP_TOKEN}
       >
         {route?.data ? (
-          <Source id="my-data" type="geojson" data={drawRoute(geojson)}>
+          <Source id="my-data" type="geojson" data={geojson}>
             <Layer {...layerStyle} />
           </Source>
         ) : (

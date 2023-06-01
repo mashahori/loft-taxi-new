@@ -1,3 +1,4 @@
+import { FC } from "react";
 import { Form, Field } from "react-final-form";
 import { TextField, Button } from "@mui/material";
 import styled from "styled-components";
@@ -12,7 +13,11 @@ import {
 import { useSignup } from "api/queries/useSignup";
 import { ButtonLoader } from "ui";
 
-export const SignupForm = ({ onSignup }) => {
+interface ISignupFormProps {
+  onSignup: () => void;
+}
+
+export const SignupForm: FC<ISignupFormProps> = ({ onSignup }) => {
   const { mutate, isLoading } = useSignup(() => {
     onSignup();
     navigate("/map");

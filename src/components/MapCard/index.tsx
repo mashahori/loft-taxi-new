@@ -9,8 +9,8 @@ export const MapCard = () => {
   return (
     <S.Wrapper>
       <Card>
-        <S.Title variant="h2">Заполните платежные данные</S.Title>
-        <S.Text variant="subtitle1">
+        <S.Title>Заполните платежные данные</S.Title>
+        <S.Text>
           Укажите информацию о банковской карте, чтобы сделать заказ.
         </S.Text>
         <Button
