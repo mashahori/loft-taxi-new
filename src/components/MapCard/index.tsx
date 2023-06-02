@@ -9,17 +9,15 @@ export const MapCard = () => {
   return (
     <S.Wrapper>
       <Card>
-        <S.Title>Заполните платежные данные</S.Title>
-        <S.Text>
-          Укажите информацию о банковской карте, чтобы сделать заказ.
-        </S.Text>
+        <S.Title>Add payment method</S.Title>
+        <S.Text>Enter Your Payment Information</S.Text>
         <Button
           to="/profile"
           component={Link}
           variant="contained"
           color="primary"
         >
-          Перейти в профиль
+          go to profile
         </Button>
       </Card>
     </S.Wrapper>

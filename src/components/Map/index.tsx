@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { FC } from "react";
+import { FC, Suspense } from "react";
 import { Map as MapGL, Source, Layer } from "react-map-gl";
 
 import { MAP_TOKEN } from "constants/mapToken";
@@ -9,9 +9,9 @@ import { useGetCard, useOrderTaxi } from "api/queries";
 import { OrderTaxiForm } from "forms";
 
 export const Map: FC = () => {
-  const { status, data, error, refetch, isSuccess } = useGetCard();
+  const { status, data, error, refetch, isSuccess, isLoading } = useGetCard();
 
-  const { mutate, isLoading, data: route } = useOrderTaxi();
+  const { mutate, data: route } = useOrderTaxi();
 
   const handleOrderTaxi = (addresses) => {
     mutate(addresses);
@@ -56,7 +56,7 @@ export const Map: FC = () => {
           ""
         )}
       </MapGL>
-      {isSuccess ? (
+      {data?.cardName ? (
         <OrderTaxiForm handleOrderTaxi={handleOrderTaxi} />
       ) : (
         <MapCard />

@@ -1,49 +1,24 @@
-import { FC, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { FC } from "react";
+
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-import { getToken } from "services/tokenService";
-import { Auth, Dashboard } from "pages";
-import { Profile, Map } from "components";
-import { LoginForm, SignupForm } from "forms";
-
-import { ProtectedRoute } from "./ProtectedRoute";
+import { Routes } from "./routes";
 import { GlobalStyles } from "./global-styles";
 
 const queryClient = new QueryClient();
 
 export const App: FC = () => {
-  const [authed, setAuthed] = useState(Boolean(getToken()));
-
   return (
-    <QueryClientProvider client={queryClient}>
-      <Routes>
-        <Route path="/auth" element={<Auth />}>
-          <Route
-            path="/auth/login"
-            element={<LoginForm onLogin={() => setAuthed(true)} />}
-          />
-          <Route
-            path="/auth/signup"
-            element={<SignupForm onSignup={() => setAuthed(true)} />}
-          />
-        </Route>
-        <Route
-          path="/"
-          element={
-            <ProtectedRoute redirectPath="/auth/login" isAllowed={authed}>
-              <Dashboard />
-            </ProtectedRoute>
-          }
-        >
-          <Route path="/map" element={<Map />} />
-          <Route path="/profile" element={<Profile />} />
-        </Route>
-        <Route path="*" element={<p>There's nothing here: 404!</p>} />
-      </Routes>
-      <ReactQueryDevtools />
-      <GlobalStyles />
-    </QueryClientProvider>
+    <>
+      <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools />
+        <GlobalStyles />
+        <Routes />
+      </QueryClientProvider>
+      <ToastContainer />
+    </>
   );
 };

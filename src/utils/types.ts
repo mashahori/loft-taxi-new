@@ -11,3 +11,8 @@ export interface ISignupPayload {
 }
 
 export type ILoginPayload = Pick<ISignupPayload, "email" | "password">;
+
+export interface IError {
+  error: string;
+  success: boolean;
+}
