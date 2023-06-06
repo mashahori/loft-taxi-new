@@ -7,11 +7,11 @@ export const Title = styled.h1`
 `;
 
 export const Container = styled.div`
-  height: 100vh;
+  height: calc(100vh - 104px);
   background-image: url("/profile_bg.svg");
   display: flex;
   justify-content: center;
-  padding-top: 100px;
+  padding-top: 40px;
 `;
 
 export const Text = styled.p`
@@ -21,7 +21,7 @@ export const Text = styled.p`
 `;
 
 export const Wrapper = styled.div`
-  width: 900px;
+  min-width: 900px;
   margin: 0 auto;
   text-align: center;
 `;

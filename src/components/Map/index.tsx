@@ -1,20 +1,39 @@
 // @ts-nocheck
-import { FC, Suspense } from "react";
-import { Map as MapGL, Source, Layer } from "react-map-gl";
+import { FC, Suspense, useState, useEffect } from "react";
+import {
+  Map as MapGL,
+  Source,
+  Layer,
+  NavigationControl,
+  ScaleControl,
+  useMap,
+} from "react-map-gl";
 
 import { MAP_TOKEN } from "constants/mapToken";
 
-import { MapCard } from "components/MapCard";
+import { MapCard, SuccessOrderCard, CardLoader } from "components";
 import { useGetCard, useOrderTaxi } from "api/queries";
 import { OrderTaxiForm } from "forms";
 
+type IModalType = "default" | "order" | "success" | "loading";
+
 export const Map: FC = () => {
   const { status, data, error, refetch, isSuccess, isLoading } = useGetCard();
+  const [modal, setModal] = useState<IModalType>("loading");
+
+  useEffect(() => {
+    if (data?.cardName) {
+      setModal("order");
+    }
+  }, [data]);
 
   const { mutate, data: route } = useOrderTaxi();
 
-  const handleOrderTaxi = (addresses) => {
-    mutate(addresses);
+  const handleOrderTaxi = async (addresses) => {
+    await mutate(addresses);
+    if (isSuccess) {
+      setModal("success");
+    }
   };
 
   const geojson = {
@@ -40,11 +59,11 @@ export const Map: FC = () => {
     <>
       <MapGL
         initialViewState={{
-          longitude: 30.272182,
-          latitude: 59.800652,
-          zoom: 12,
+          longitude: 30.316273,
+          latitude: 59.940578,
+          zoom: 11,
         }}
-        style={{ height: "100vh" }}
+        style={{ height: "calc(100vh - 150px" }}
         mapStyle="mapbox://styles/mapbox/streets-v9"
         mapboxAccessToken={MAP_TOKEN}
       >
@@ -56,11 +75,16 @@ export const Map: FC = () => {
           ""
         )}
       </MapGL>
-      {data?.cardName ? (
-        <OrderTaxiForm handleOrderTaxi={handleOrderTaxi} />
-      ) : (
-        <MapCard />
-      )}
+      {
+        {
+          loading: <CardLoader />,
+          default: <MapCard />,
+          order: <OrderTaxiForm handleOrderTaxi={handleOrderTaxi} />,
+          success: (
+            <SuccessOrderCard makeAnotherOrder={() => setModal("order")} />
+          ),
+        }[modal]
+      }
     </>
   );
 };

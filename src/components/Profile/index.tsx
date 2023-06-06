@@ -21,7 +21,7 @@ export const Profile: FC = () => {
 
   return (
     <S.Container>
-      <Card height={600}>
+      <Card height={500}>
         <S.Wrapper>
           <S.Title>Профиль</S.Title>
           <S.Text>Введите платежные данные</S.Text>
