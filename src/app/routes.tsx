@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { Routes as ReactRoutes, Route } from "react-router-dom";
+import { Routes as ReactRoutes, Route, Navigate } from "react-router-dom";
 
 import { Auth, Dashboard } from "pages";
 import { Profile, Map } from "components";
@@ -12,16 +12,7 @@ export const Routes: FC = () => {
   const [authed, setAuthed] = useState<boolean>(Boolean(getToken()));
   return (
     <ReactRoutes>
-      <Route path="/auth" element={<Auth />}>
-        <Route
-          path="/auth/login"
-          element={<LoginForm onLogin={() => setAuthed(true)} />}
-        />
-        <Route
-          path="/auth/signup"
-          element={<SignupForm onSignup={() => setAuthed(true)} />}
-        />
-      </Route>
+      <Route path="/" element={<Navigate to="/map" />} />
       <Route
         path="/"
         element={
@@ -33,6 +24,18 @@ export const Routes: FC = () => {
         <Route path="/map" element={<Map />} />
         <Route path="/profile" element={<Profile />} />
       </Route>
+      <Route path="/auth" element={<Navigate to="/auth/login" />} />
+      <Route path="/auth" element={<Auth />}>
+        <Route
+          path="/auth/login"
+          element={<LoginForm onLogin={() => setAuthed(true)} />}
+        />
+        <Route
+          path="/auth/signup"
+          element={<SignupForm onSignup={() => setAuthed(true)} />}
+        />
+      </Route>
+
       <Route path="*" element={<p>There's nothing here: 404!</p>} />
     </ReactRoutes>
   );
