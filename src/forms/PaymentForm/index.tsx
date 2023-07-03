@@ -11,10 +11,6 @@ import {
 } from "utils/validate";
 import { IPaymentForm } from "app/types";
 import { ButtonLoader } from "ui";
-import { Card } from "ui/Card";
-import { useAddCard, useGetCard } from "api/queries";
-import { getToken } from "services/tokenService";
-import { PaymentInfo } from "components/PaymentInfo";
 
 import * as S from "./styles";
 

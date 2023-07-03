@@ -35,7 +35,7 @@ export const LoginForm: FC<ILoginForm> = ({ onLogin }) => {
               {({ input, meta: { error, touched } }) => (
                 <TextField
                   {...input}
-                  id="standard-basic"
+                  id="email"
                   label="Email*"
                   variant="standard"
                   placeholder="mail@mail.ru"
@@ -50,7 +50,7 @@ export const LoginForm: FC<ILoginForm> = ({ onLogin }) => {
                 <TextField
                   {...input}
                   type="password"
-                  id="standard-basic"
+                  id="password"
                   label="Password*"
                   variant="standard"
                   placeholder="*************"

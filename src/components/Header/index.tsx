@@ -1,6 +1,6 @@
 import { Navigation } from "ui";
 import { LogoHeader } from "icons";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import { HEADER_ITEMS } from "constants/headerItems";
 import { IHeaderItem } from "app/types";
@@ -10,6 +10,7 @@ import * as S from "./styles";
 
 export const Header = () => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   const handleLogout = () => {
     removeToken();
@@ -25,7 +26,9 @@ export const Header = () => {
         <S.List>
           {HEADER_ITEMS.map(({ text, path }: IHeaderItem) => (
             <li key={path}>
-              <Navigation path={path}>{text}</Navigation>
+              <Navigation path={path} currentPath={pathname === `/${path}`}>
+                {text}
+              </Navigation>
             </li>
           ))}
         </S.List>

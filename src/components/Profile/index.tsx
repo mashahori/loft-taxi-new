@@ -23,8 +23,8 @@ export const Profile: FC = () => {
     <S.Container>
       <Card height={500}>
         <S.Wrapper>
-          <S.Title>Профиль</S.Title>
-          <S.Text>Введите платежные данные</S.Text>
+          <S.Title>My profile</S.Title>
+          <S.Text>Add payment information</S.Text>
           <S.Flex>
             <PaymentForm onSaveCard={handleSaveCard} isLoading={isLoading} />
             {data && (

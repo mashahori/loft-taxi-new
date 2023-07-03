@@ -15,19 +15,19 @@ export const LogoMain = () => (
       fill="#FDBF5A"
     />
     <path
-      fill-rule="evenodd"
-      clip-rule="evenodd"
+      fillRule="evenodd"
+      clipRule="evenodd"
       d="M97 136C134.555 136 165 105.555 165 68C165 60.1133 163.657 52.5401 161.188 45.4967L74.4967 132.188C81.5401 134.657 89.1133 136 97 136ZM42.0509 108.065L75.416 74.7003L36.8913 36.1756C31.8536 45.6708 29 56.5022 29 68C29 82.9801 33.8439 96.8289 42.0509 108.065ZM65.1756 7.89132L103.7 46.416L137.065 13.0509C125.829 4.84392 111.98 0 97 0C85.5022 0 74.6708 2.85364 65.1756 7.89132Z"
       fill="#FDBF5A"
     />
-    <path d="M51.4143 22.5858L59.8285 31" stroke="#FDBF5A" stroke-width="4" />
-    <path d="M69.4143 109L61.0001 117.414" stroke="#FDBF5A" stroke-width="4" />
-    <path d="M84.4143 93L76.0001 101.414" stroke="#FDBF5A" stroke-width="4" />
-    <path d="M99.4143 77L91.0001 85.4142" stroke="#FDBF5A" stroke-width="4" />
-    <path d="M129.414 45L121 53.4142" stroke="#FDBF5A" stroke-width="4" />
-    <path d="M144.414 29L136 37.4142" stroke="#FDBF5A" stroke-width="4" />
-    <path d="M67 38L75.4142 46.4142" stroke="#FDBF5A" stroke-width="4" />
-    <path d="M84 55L92.4142 63.4142" stroke="#FDBF5A" stroke-width="4" />
-    <path d="M114.414 61L106 69.4142" stroke="#FDBF5A" stroke-width="4" />
+    <path d="M51.4143 22.5858L59.8285 31" stroke="#FDBF5A" strokeWidth="4" />
+    <path d="M69.4143 109L61.0001 117.414" stroke="#FDBF5A" strokeWidth="4" />
+    <path d="M84.4143 93L76.0001 101.414" stroke="#FDBF5A" strokeWidth="4" />
+    <path d="M99.4143 77L91.0001 85.4142" stroke="#FDBF5A" strokeWidth="4" />
+    <path d="M129.414 45L121 53.4142" stroke="#FDBF5A" strokeWidth="4" />
+    <path d="M144.414 29L136 37.4142" stroke="#FDBF5A" strokeWidth="4" />
+    <path d="M67 38L75.4142 46.4142" stroke="#FDBF5A" strokeWidth="4" />
+    <path d="M84 55L92.4142 63.4142" stroke="#FDBF5A" strokeWidth="4" />
+    <path d="M114.414 61L106 69.4142" stroke="#FDBF5A" strokeWidth="4" />
   </svg>
 );

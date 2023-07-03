@@ -5,3 +5,4 @@ export * from "./PaymentInfo";
 export * from "./SuccessOrderCard";
 export * from "./MapCard";
 export * from "./CardLoader";
+export * from "./MapGL";

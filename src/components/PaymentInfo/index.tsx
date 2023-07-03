@@ -1,8 +1,4 @@
 import { FC } from "react";
-import { Button } from "@mui/material";
-import { Link } from "react-router-dom";
-
-import { Card } from "ui/Card";
 import { ICardInfo } from "app/types";
 
 import * as S from "./styles";

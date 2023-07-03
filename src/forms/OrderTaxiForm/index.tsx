@@ -54,7 +54,9 @@ export const OrderTaxiForm: FC<IOrderTaxiProps> = ({ handleOrderTaxi }) => {
                       variant="standard"
                     >
                       {data?.addresses?.map((el: string) => (
-                        <MenuItem value={el}>{el}</MenuItem>
+                        <MenuItem key={`from-${el}`} value={el}>
+                          {el}
+                        </MenuItem>
                       ))}
                     </Select>
                   </FormControl>
@@ -71,7 +73,9 @@ export const OrderTaxiForm: FC<IOrderTaxiProps> = ({ handleOrderTaxi }) => {
                       variant="standard"
                     >
                       {data?.addresses?.map((el: string) => (
-                        <MenuItem value={el}>{el}</MenuItem>
+                        <MenuItem key={`to-${el}`} value={el}>
+                          {el}
+                        </MenuItem>
                       ))}
                     </Select>
                   </FormControl>

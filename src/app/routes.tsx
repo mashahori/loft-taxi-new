@@ -8,7 +8,7 @@ import { getToken } from "services/tokenService";
 
 import { ProtectedRoute } from "./ProtectedRoute";
 
-export const Routes = () => {
+export const Routes: FC = () => {
   const [authed, setAuthed] = useState<boolean>(Boolean(getToken()));
   return (
     <ReactRoutes>
