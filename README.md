@@ -1,7 +1,8 @@
 # Loft taxi
 
-> Application for ordering taxi
-> Live demo [_here_](https://mashahori-taxi-56513669bef5.herokuapp.com/auth/login).
+Application for ordering taxi
+
+Live demo [_here_](https://mashahori-taxi-56513669bef5.herokuapp.com/auth/login).
 
 ## Technologies
 
