@@ -1,10 +1,17 @@
 # Loft taxi
 
-Application for ordering a taxi
+> Application for ordering taxi
+> Live demo [_here_](https://mashahori-taxi-56513669bef5.herokuapp.com/auth/login).
 
-## Available Scripts
+## Technologies
 
-In the project directory, you can run:
+Typescript, React, Mapbox GL, React Query, Material UI, styled components, React Final Form
+
+## Setup
+
+### `yarn`
+
+Installs dependencies
 
 ### `yarn start`
 
