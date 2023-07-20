@@ -11,6 +11,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 25px;
+
+  @media (max-width: 440px) {
+    align-items: center;
+  }
 `;
 
 export const Wrapper = styled.div`

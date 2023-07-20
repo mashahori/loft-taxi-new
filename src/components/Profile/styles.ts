@@ -12,6 +12,11 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   padding-top: 40px;
+
+  @media (max-width: 440px) {
+    padding-bottom: 40px;
+    height: 100%;
+  }
 `;
 
 export const Text = styled.p`
@@ -24,9 +29,18 @@ export const Wrapper = styled.div`
   min-width: 900px;
   margin: 0 auto;
   text-align: center;
+
+  @media (max-width: 440px) {
+    min-width: auto;
+  }
 `;
 
 export const Flex = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 440px) {
+    flex-direction: column;
+    gap: 40px;
+  }
 `;

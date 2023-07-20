@@ -5,17 +5,24 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { HEADER_ITEMS } from "constants/headerItems";
 import { IHeaderItem } from "app/types";
 import { removeToken } from "services/tokenService";
+import { useWindowWidth } from "hooks/useWindowWidth";
+import { BREAK_POINT } from "constants/breakPoint";
 
 import * as S from "./styles";
 
 export const Header = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const width = useWindowWidth();
 
   const handleLogout = () => {
     removeToken();
     navigate("/auth/login");
   };
+
+  if (width <= BREAK_POINT) {
+    return <>Mobile header</>;
+  }
 
   return (
     <S.Wrapper>

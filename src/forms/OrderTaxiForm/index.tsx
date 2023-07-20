@@ -9,7 +9,6 @@ import {
   InputLabel,
 } from "@mui/material";
 
-import { Card } from "ui";
 import { useGetAddresses } from "api/queries";
 import { IAddressesPayload } from "utils/types";
 
@@ -38,57 +37,53 @@ export const OrderTaxiForm: FC<IOrderTaxiProps> = ({ handleOrderTaxi }) => {
     handleOrderTaxi({ address1: start, address2: end });
 
   return (
-    <S.Container>
-      <Card>
-        <Form
-          onSubmit={handleSubmit}
-          render={({ handleSubmit }) => (
-            <S.StyledForm onSubmit={handleSubmit}>
-              <Field name="address1">
-                {({ input, meta: { error, touched } }) => (
-                  <FormControl fullWidth>
-                    <InputLabel>From</InputLabel>
-                    <Select
-                      value={start}
-                      onChange={handleChangeStart}
-                      variant="standard"
-                    >
-                      {data?.addresses?.map((el: string) => (
-                        <MenuItem key={`from-${el}`} value={el}>
-                          {el}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                )}
-              </Field>
+    <Form
+      onSubmit={handleSubmit}
+      render={({ handleSubmit }) => (
+        <S.StyledForm onSubmit={handleSubmit}>
+          <Field name="address1">
+            {({ input, meta: { error, touched } }) => (
+              <FormControl fullWidth>
+                <InputLabel>From</InputLabel>
+                <Select
+                  value={start}
+                  onChange={handleChangeStart}
+                  variant="standard"
+                >
+                  {data?.addresses?.map((el: string) => (
+                    <MenuItem key={`from-${el}`} value={el}>
+                      {el}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            )}
+          </Field>
 
-              <Field name="address2">
-                {({ input, meta: { error, touched } }) => (
-                  <FormControl fullWidth>
-                    <InputLabel>To</InputLabel>
-                    <Select
-                      value={end}
-                      onChange={handleChangeEnd}
-                      variant="standard"
-                    >
-                      {data?.addresses?.map((el: string) => (
-                        <MenuItem key={`to-${el}`} value={el}>
-                          {el}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                )}
-              </Field>
+          <Field name="address2">
+            {({ input, meta: { error, touched } }) => (
+              <FormControl fullWidth>
+                <InputLabel>To</InputLabel>
+                <Select
+                  value={end}
+                  onChange={handleChangeEnd}
+                  variant="standard"
+                >
+                  {data?.addresses?.map((el: string) => (
+                    <MenuItem key={`to-${el}`} value={el}>
+                      {el}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            )}
+          </Field>
 
-              <Button type="submit" variant="contained" disabled={isSame}>
-                Get Taxi
-              </Button>
-            </S.StyledForm>
-          )}
-        />
-      </Card>
-    </S.Container>
+          <Button type="submit" variant="contained" disabled={isSame}>
+            Get Taxi
+          </Button>
+        </S.StyledForm>
+      )}
+    />
   );
 };

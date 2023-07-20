@@ -13,11 +13,3 @@ export const Text = styled.p`
   line-height: 21px;
   margin-bottom: 28px;
 `;
-
-export const Wrapper = styled.div`
-  width: 450px;
-  position: absolute;
-  z-index: 5;
-  top: 160px;
-  left: 70px;
-`;
