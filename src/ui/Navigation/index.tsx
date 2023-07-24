@@ -26,4 +26,10 @@ const StyledLink = styled(Link)<{ $active?: boolean }>`
   &:hover {
     color: #fdbf5a;
   }
+
+  @media (max-width: 440px) {
+    color: #000;
+    display: block;
+    padding: 10px 20px;
+  }
 `;

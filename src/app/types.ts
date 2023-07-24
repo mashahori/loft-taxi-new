@@ -1,6 +1,7 @@
 export interface IHeaderItem {
   path: string;
   text: string;
+  icon: React.ReactElement;
 }
 
 export interface ICardInfo {
